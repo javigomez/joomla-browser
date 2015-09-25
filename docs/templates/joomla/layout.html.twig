@@ -1,0 +1,312 @@
+{# Copyright (C) 2012 - 2015 Open Source Matters, Inc. All rights reserved. #}
+{# GNU General Public License version 2 or later; see LICENSE.txt #}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+    <head>
+        <title>{% block title %}{{ project.name }}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Joomla!" />
+        <meta name="description" content="The Joomla! API Documentation" />
+        <meta name="generator" content="phpDocumentor" />
+        <meta property="og:image" content="https://cdn.joomla.org/images/joomla-org-og.jpg" />
+        <meta property="og:site_name" content="Joomla! API" />
+       	<meta name="twitter:card" content="summary" />
+       	<meta name="twitter:site" content="@joomla" />
+        <meta name="twitter:title" content="Joomla! API" />
+       	<meta name="twitter:description" content="The Joomla! API Documentation" />
+       	<meta name="twitter:image" content="https://cdn.joomla.org/images/joomla-org-og.jpg" />
+
+        {% block javascripts %}
+        <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="//code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js" type="text/javascript"></script>
+        <script src="//code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="//api.joomla.org/js/template.js" type="text/javascript"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" type="text/javascript"></script>
+        {% endblock %}
+
+        {% block stylesheets %}
+        <link href="//cdn.joomla.org/template/css/v3_template.min.css?v1.3.0" rel="stylesheet" media="all" />
+        <link href="//api.joomla.org/css/overrides.css" rel="stylesheet" media="all" />
+        <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            h1, h2, h3, h4, h5, h6, .site-title {
+                font-family: 'Open Sans', sans-serif;
+            }
+        </style>
+        {% endblock %}
+
+        {% block icons %}
+        <link rel="shortcut icon" href="//api.joomla.org/images/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//api.joomla.org/images/apple-touch-icon-144-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//api.joomla.org/images/apple-touch-icon-114-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//api.joomla.org/images/apple-touch-icon-72-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" href="//api.joomla.org/images/apple-touch-icon-57-precomposed.png" />
+        {% endblock %}
+    </head>
+    <body class="site">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <div class="nav-collapse">
+                        <ul id="nav-joomla" class="nav">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span aria-hidden="true" class="icon-joomla"></span> Joomla!<sup>&reg;</sup> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="https://www.joomla.org">
+                                            <span aria-hidden="true" class="icon-joomla"></span> Joomla! Home
+                                        </a>
+                                    </li>
+                                    <li class="divider"><span></span></li>
+                                    <li class="nav-header"><span>Recent News</span></li>
+                                    <li><a href="https://www.joomla.org/announcements.html">Announcements</a></li>
+                                    <li><a href="http://community.joomla.org/blogs/community.html">Blogs</a></li>
+                                    <li><a href="http://magazine.joomla.org/">Magazine</a></li>
+                                    <li class="divider"><span></span></li>
+                                    <li class="nav-header"><span>Support Joomla!</span></li>
+                                    <li><a href="http://volunteers.joomla.org">Contribute</a></li>
+                                    <li><a href="http://shop.joomla.org">Shop Joomla Gear</a></li>
+                                    <li><a href="https://www.joomla.org/sponsorship">Sponsorship</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">About <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://www.joomla.org/about-joomla.html">About Joomla!</a>
+                                    <li><a href="https://www.joomla.org/core-features.html">Core Features</a>
+                                    <li><a href="https://www.joomla.org/about-joomla.html">The Software</a></li>
+                                    <li><a href="https://www.joomla.org/about-joomla/the-project.html">The Project</a></li>
+                                    <li><a href="https://www.joomla.org/about-joomla/the-project/leadership-team.html">Leadership</a></li>
+                                    <li><a href="http://opensourcematters.org">Open Source Matters</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Community <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://community.joomla.org">Joomla! Community Portal</a></li>
+                                    <li><a href="http://events.joomla.org/">Joomla! Events</a></li>
+                                    <li><a href="http://community.joomla.org/user-groups.html">Joomla! User Groups</a></li>
+                                    <li><a href="http://volunteers.joomla.org">Joomla! Volunteers Portal</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Support <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://forum.joomla.org">Joomla! Forum</a></li>
+                                    <li><a href="https://docs.joomla.org">Joomla! Documentation</a></li>
+                                    <li><a href="http://issues.joomla.org">Joomla! Issue Tracker</a></li>
+                                    <li><a href="http://resources.joomla.org">Joomla! Resources</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Read <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://magazine.joomla.org">Joomla! Magazine</a></li>
+                                    <li><a href="http://community.joomla.org/connect.html">Joomla! Connect</a></li>
+                                    <li><a href="https://www.joomla.org/mailing-lists.html">Joomla! Mailing Lists</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Extend <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://extensions.joomla.org">Extension Directory</a></li>
+                                    <li><a href="http://community.joomla.org/showcase">Showcase Directory</a></li>
+                                    <li><a href="http://resources.joomla.org">Resource Directory</a></li>
+                                    <li><a href="http://community.joomla.org/translations.html">Translations</a></li>
+                                    <li><a href="http://ideas.joomla.org">Idea Pool</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Developers <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://developer.joomla.org">Developer Site</a></li>
+                                    <li><a href="https://docs.joomla.org">Documentation</a></li>
+                                    <li><a href="https://docs.joomla.org/Bug_Squad">Joomla! Bug Squad</a></li>
+                                    <li><a href="https://api.joomla.org">Joomla! API</a></li>
+                                    <li><a href="http://joomlacode.org">JoomlaCode</a></li>
+                                    <li><a href="http://framework.joomla.org">Joomla! Framework</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul id="nav-international" class="nav pull-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span aria-hidden="true" class="icon-earth"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://community.joomla.org/translations.html">Translations</a></li>
+                                    <li><a href="https://demo.joomla.org/multilingual">Multilingual Demo</a></li>
+                                    <li><a href="https://docs.joomla.org/Translations_Working_Group">Translation Working Group</a></li>
+                                    <li><a href="http://forum.joomla.org/viewforum.php?f=11">Translations Forum</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div id="nav-search" class="navbar-search pull-right">
+                            <form action="//api.joomla.org/results.html" id="searchbox_007628682600509520926:myhvbnm964o" class="form-search">
+                                <input type="text" name="q" id="api-google-search" class="search-query input-medium" size="20" placeholder="Search..." autocomplete="off">
+                                <input type="hidden" name="cx" value="007628682600509520926:myhvbnm964o">
+                                <input name="siteurl" type="hidden" value="api.joomla.org/">
+                                <input name="ref" type="hidden" value="api.joomla.org/">
+                                <input name="ss" type="hidden" value="">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="span7">
+                        <h1 class="page-title"><a href="//api.joomla.org">{{ project.name }}</a></h1>
+                    </div>
+                    <div class="span5">
+                        <div class="btn-toolbar pull-right">
+                            <div class="btn-group">
+                                <a href="https://www.joomla.org/download.html" class="btn btn-large btn-warning">Download</a>
+                            </div>
+                            <div class="btn-group">
+                                <a href="https://demo.joomla.org" class="btn btn-large btn-primary">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {% block header %}
+        <div class="subnav-wrapper">
+            <div class="subnav">
+                <div class="container">
+                    <ul class="nav menu nav-pills">
+                        <li>
+                            <a href="//api.joomla.org">Joomla! API Index</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('index.html') }}">{{ project.name }}</a>
+                        </li>
+                        <li class="dropdown">
+                            <a id="api" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                API Documentation <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if (project.namespace.children|length > 0) %}
+                                    <li><a>Namespaces</a></li>
+                                    {% for namespace in project.namespace.children %}
+                                    <li><a href="{{ path(namespace) }}">{{ namespace.name }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if (project.index.packages|length) %}
+                                    <li><a>Packages</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="charts-menu">
+                            <a id="charts" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Charts <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('graph_class.html') }}">
+                                        <i class="icon-shuffle"></i>&#160;Class hierarchy diagram
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="reports-menu">
+                            <a id="reports" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Reports <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('deprecated.html') }}"><i class="icon-shuffle"></i>&#160;Deprecated</a></li>
+                                <li><a href="{{ path('errors.html') }}"><i class="icon-shuffle"></i>&#160;Errors</a></li>
+                                <li><a href="{{ path('markers.html') }}"><i class="icon-shuffle"></i>&#160;Markers</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        <div class="body">
+            <div id="___" class="container">
+                <noscript>
+                    <div class="alert alert-warning">
+                        Javascript is disabled; several features are only available if Javascript is enabled.
+                    </div>
+                </noscript>
+
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <div class="footer center">
+            <div class="container">
+                <hr />
+                <div class="social">
+                    <ul class="soc">
+                        <li><a href="https://twitter.com/joomla" target="_blank" class="soc-twitter2" title="Follow Us on Twitter"></a></li>
+                        <li><a href="https://www.facebook.com/joomla" target="_blank" class="soc-facebook" title="Joomla! on Facebook"></a></li>
+                        <li><a href="https://plus.google.com/+joomla/posts" target="_blank" class="soc-google" title="Joomla! on Google+"></a></li>
+                        <li><a href="https://www.youtube.com/user/joomla" target="_blank" class="soc-youtube3" title="Joomla's YouTube Channel"></a></li>
+                        <li><a href="https://www.linkedin.com/company/joomla" target="_blank" class="soc-linkedin" title="Joomla! on Linkedin"></a></li>
+                        <li><a href="https://www.pinterest.com/joomla" target="_blank" class="soc-pinterest" title="Joomla's Pintrest Board"></a></li>
+                        <li><a href="https://github.com/joomla" target="_blank" class="soc-github3 soc-icon-last" title="Joomla's GitHub"></a></li>
+                    </ul>
+                </div>
+                {% block footer %}
+                <p>Documentation is powered by <a href="http://www.phpdoc.org">phpDocumentor</a> and generated on {{ now|date("r") }}.</p>
+                {% endblock %}
+                <div class="footer-menu">
+                    <ul class="nav-inline">
+                        <li><a href="https://www.joomla.org"><span>Home</span></a></li>
+                        <li><a href="https://www.joomla.org/about-joomla.html"><span>About</span></a></li>
+                        <li><a href="http://community.joomla.org"><span>Community</span></a></li>
+                        <li><a href="http://forum.joomla.org"><span>Forum</span></a></li>
+                        <li><a href="http://extensions.joomla.org"><span>Extensions</span></a></li>
+                        <li><a href="http://resources.joomla.org"><span>Resources</span></a></li>
+                        <li><a href="https://docs.joomla.org"><span>Docs</span></a></li>
+                        <li><a href="http://developer.joomla.org"><span>Developer</span></a></li>
+                        <li><a href="http://shop.joomla.org"><span>Shop</span></a></li>
+                    </ul>
+
+                    <ul class="nav-inline">
+                        <li><a href="https://www.joomla.org/accessibility-statement.html">Accessibility Statement</a></li>
+                        <li><a href="https://www.joomla.org/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="https://github.com/joomla/joomla-websites/issues/new?title=%5Bjapi%5D%20&body=Please%20describe%20the%20problem%20or%20your%20issue">Report an Issue</a></li>
+                        <li><a href="https://www.rochen.com/joomla-hosting" target="_blank">Joomla Hosting by Rochen</a></li>
+                    </ul>
+
+                    <p>&copy; 2005 - {{ now|date("Y") }} <a href="http://www.opensourcematters.org">Open Source Matters, Inc.</a> All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-544070-20', 'joomla.org');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

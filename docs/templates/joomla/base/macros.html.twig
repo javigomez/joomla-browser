@@ -1,0 +1,55 @@
+{% macro renderMarkerCounter(files) %}
+    {% set count = 0 %}
+    {% for file in files %}
+        {% set count = count + file.markers|length %}
+    {% endfor %}
+    <span class="label label-info">{{ count }}</span>
+{% endmacro %}
+
+{% macro renderErrorCounter(files) %}
+    {% set count = 0 %}
+    {% for file in files %}
+        {% set count = count + file.allerrors|length %}
+    {% endfor %}
+    <span class="label label-info">{{ count }}</span>
+{% endmacro %}
+
+{% macro renderDeprecatedCounter(elements) %}
+    {% set count = 0 %}
+    {% for element in elements if element.deprecated %}
+        {% set count = count + element.tags.deprecated.count %}
+    {% endfor %}
+    <span class="label label-info">{{ count }}</span>
+{% endmacro %}
+
+{% macro buildBreadcrumb(element) %}
+    {% import _self as self %}
+
+    {% if element.parentNamespace and element.parentNamespace.name != '\\' %}
+        {{ self.buildBreadcrumb(element.parentNamespace) }}
+    {% elseif element.parent and element.parent.name != '\\' %}
+        {{ self.buildBreadcrumb(element.parent) }}
+    {% endif %}
+
+    <li><span class="divider">\</span><a href="{{ path(element) }}">{{ element.name }}</a></li>
+{% endmacro %}
+
+{% macro elementSummary(element, type) %}
+    {% if type == 'function' or type == 'constant' %}
+        {% set class = '' %}
+    {% else %}
+        {% set class = 'ajax ' %}
+    {% endif %}
+    <div id="{{ element.name }}" class="element clickable {{ class }}{{ type }}{% if type == 'function' or type == 'constant' %} {{ element.visibility }} method_{{ element.name }}{% endif %}"{% if type == 'function' or type == 'constant' %} data-toggle="collapse" data-target=".method_{{ element.name }} .collapse"{% endif %}>
+        <h1><i class="icon-custom icon-{{ type }}"></i> {{ element.name }}{% if path(element) and type != 'function' and type != 'constant' %}<a href="{{ path(element) }}" class="more">¶</a>{% endif %}</h1>
+        <p class="short_description">{{ element.summary }}</p>
+        <div class="details collapse">
+            {% if type == 'function' or type == 'constant' %}
+                {% include 'class/details.method.html.twig' with {'method': element} %}
+            {% else %}
+                {{ element.description }}
+            {% endif %}
+        </div>
+        {% if path(element) and type != 'function' and type != 'constant' %}<a href="{{ path(element) }}" class="more">« More »</a>{% endif %}
+    </div>
+{% endmacro %}
